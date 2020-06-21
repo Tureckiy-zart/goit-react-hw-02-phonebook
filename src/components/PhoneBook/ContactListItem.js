@@ -1,6 +1,8 @@
 import React from "react";
 
-export const PrintComponent = ({ client }) => (
+
+
+export const ContactListItem = ({ client }) => (
   <p className="clientName">
     {client.name}: {client.phone}
   </p>

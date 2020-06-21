@@ -1,13 +1,18 @@
 import React from "react";
-import { PrintComponent } from "./PrintComponent";
+import { ContactListItem } from "./ContactListItem";
+import { BntFormDelete } from "./BntFormDelete";
 
-export const Consacts = ({ onPrintConstacts }) => {
-  return (
-    <>
-      <div className="contactList">
-        Contact: {onPrintConstacts()}
-        {/* <button onClick={() => delComponent(id)}>delete</button> */}
-      </div>
-    </>
-  );
+
+
+
+
+export const ContactList = ({ data: { clients }, onDelComponent }) => {
+  if (!clients.length) {alert('Enter first name')}
+
+  return (clients.length)&&(clients.map((client) => (
+    <div className="contactList" key={client.id}>
+      <ContactListItem client={client} />
+      <BntFormDelete client={client} onDelComponent={onDelComponent}/>
+    </div>
+  )))
 };
