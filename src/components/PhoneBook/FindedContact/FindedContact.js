@@ -1,4 +1,5 @@
 import React from "react";
+import { ContactList } from "../Contacts/Contacts";
 
 export const FindedContact = ({
   onfilterClient,
@@ -17,7 +18,9 @@ export const FindedContact = ({
         value={value}
       />
       <div>
-        {/* <ContactList data={ filteredClients} /> */}
+        <ContactList data={{ clients: filteredClients }} 
+        // onDelComponent={onDelComponent}
+        />
       </div>
     </>
   );

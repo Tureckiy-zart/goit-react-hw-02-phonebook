@@ -17,9 +17,11 @@ const initialState = {
 export class Form extends Component {
   state = { ...initialState };
 
-
-  // contactsVerification = (clients) =>
-  // clients.some((client) => client.name === this.state.name);
+  contactsVerification = (clients, client1) => {
+    //!!!!
+    return clients.some((client) => client.name === client1.name); //!!!
+    // return clients.map((client) => client.name !== this.state.name);//!!!
+  };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -28,13 +30,15 @@ export class Form extends Component {
       date: new Date().toDateString(),
       id: shortID(),
     };
-
-    // if (this.state.name !== "" && this.state.phone !== "" )
-    if (this.props.onContactsVerification )
-    // &&    (this.props.contactsVerification))
-    {
-      this.props.getClientData(client);
+    if (this.state.name !== "" && this.state.phone !== "") {
+      if (!this.contactsVerification(this.props.clients, client)) {
+        this.props.addClientData(client);
+      }
     }
+
+
+
+
     // this.resetForm();
     this.setState(initialState);
   };
@@ -56,8 +60,10 @@ export class Form extends Component {
   // };
 
   render() {
-    // console.log("re-render");
-    console.log('this.stateonContactsVerification', this.props.onContactsVerification)
+    // console.log("this.state FORm", this.state);
+    // console.log("initialState FORm", initialState);
+    // console.log('this.props.clients FROM APP', this.props.clients)
+
     return (
       <form
         onSubmit={this.handleSubmit}

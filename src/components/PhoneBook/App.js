@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Form } from "./Form/Form";
 import { FindedContact } from "./FindedContact/FindedContact";
-import {ContactList} from './Contacts/Contacts'
+import { ContactList } from "./Contacts/Contacts";
 
 const userSelector = (clients, filter) =>
-  clients.filter((client) => client.name.toLowerCase().includes(filter.toLowerCase()));
+  clients.filter((client) =>
+    client.name.toLowerCase().includes(filter.toLowerCase())
+  );
 // client.name.toLowerCase().includes(filter.toLowerCase()));
 
 export class App extends Component {
@@ -19,10 +21,12 @@ export class App extends Component {
     filteredUsers: [],
   };
 
-  contactsVerification = (clients) => {
-    console.log("clients", clients);
-    return clients.some((client) => client.name === this.state.name);
-  };
+  // contactsVerification = (clients, client) => {
+  //   //!!!!
+  //   console.log("clients", clients);
+  //   return clients.map((client) => client.name === this.addClientData(client)); //!!!
+  //   // return clients.map((client) => client.name !== this.state.name);//!!!
+  // };
   // filteredUsers = () => {
   //   // this.setState({userSelector});
   //   this.setState({ filteredUsers:  {...userSelector} });
@@ -32,9 +36,12 @@ export class App extends Component {
   filterClient = ({ target: { value } }) => {
     this.setState({ filter: value });
   };
-  getClientData = (client) => {
+  addClientData = (client) => {
     this.setState((prev) => ({ clients: [...prev.clients, client] }));
   };
+  // addClientData = (client) => {
+  //   this.setState((prev) => ({ clients: [...prev.clients, this.contactsVerification(client)] }));
+  // };
 
   delComponent = (id) =>
     this.setState((prev) => ({
@@ -46,18 +53,20 @@ export class App extends Component {
     const { clients, filter } = this.state;
     const filteredClients = userSelector(clients, filter);
     // console.log("filteredClients", filteredClients);
-    console.log('this.state.filteredUsers', this.state.filteredUsers)
+    console.log("this.state.filteredUsers", this.state.filteredUsers);
     return (
       <>
         <Form
-          getClientData={this.getClientData}
-          onContactsVerification={this.contactsVerification}
+          addClientData={this.addClientData}
+          // onContactsVerification={this.contactsVerification}
+          clients={clients}
         />
         <ContactList data={this.state} onDelComponent={this.delComponent} />
         <FindedContact
           onfilterClient={this.filterClient}
           value={filter}
           filteredClients={filteredClients}
+          // onDelComponent={onDelComponent}
         />
       </>
     );
