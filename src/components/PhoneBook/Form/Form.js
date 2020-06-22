@@ -18,9 +18,7 @@ export class Form extends Component {
   state = { ...initialState };
 
   contactsVerification = (clients, client1) => {
-    //!!!!
-    return clients.some((client) => client.name === client1.name); //!!!
-    // return clients.map((client) => client.name !== this.state.name);//!!!
+    return clients.some((client) => client.name === client1.name);
   };
 
   handleSubmit = (event) => {
@@ -35,10 +33,6 @@ export class Form extends Component {
         this.props.addClientData(client);
       }
     }
-
-
-
-
     // this.resetForm();
     this.setState(initialState);
   };
@@ -60,32 +54,24 @@ export class Form extends Component {
   // };
 
   render() {
-    // console.log("this.state FORm", this.state);
-    // console.log("initialState FORm", initialState);
-    // console.log('this.props.clients FROM APP', this.props.clients)
 
     return (
       <form
         onSubmit={this.handleSubmit}
-        style={{ width: 300, border: "2px dotted white" }}
-      >
+        style={{ width: 300, border: "2px dotted white" }}>
         <InputForm
           handleChange={this.handleChange}
           value={this.state.name}
-          config={config.inputName}
-        />
+          config={config.inputName}/>
         <InputForm
           handleChange={this.handleChange}
           value={this.state.phone}
-          config={config.inputPhone}
-        />
-
+          config={config.inputPhone}/>
         <label>
           <select
             name="gender"
             value={this.state.gender}
-            onChange={this.handleChange}
-          >
+            onChange={this.handleChange}>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>

@@ -5,10 +5,9 @@ export const FindedContact = ({
   onfilterClient,
   value,
   filteredClients,
-  // delComponent,
+  onDelComponent,
 }) => {
-  console.log("filteredClients", filteredClients);
-  console.log("filteredClients", typeof filteredClients);
+  // console.log("filteredClients", filteredClients);
   return (
     <>
       <input
@@ -19,7 +18,7 @@ export const FindedContact = ({
       />
       <div>
         <ContactList data={{ clients: filteredClients }} 
-        // onDelComponent={onDelComponent}
+        onDelComponent={onDelComponent}
         />
       </div>
     </>
