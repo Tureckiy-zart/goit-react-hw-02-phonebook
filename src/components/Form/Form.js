@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import shortID from "shortid";
 
-import sytles from "./Phonebook.module.css";
+// import sytles from "./Phonebook.module.css";
 import { InputForm } from "./InputForm";
-import { BntFormSubmit } from "./BntFormSubmit";
-import config from "./config.json";
+import config from "../config.json";
+import { BntFormSubmit } from "../Buttons/BntFormSubmit";
 
 // const {} = sytles;
 const initialState = {
@@ -28,9 +28,6 @@ export class Form extends Component {
       date: new Date().toDateString(),
       id: shortID(),
     };
-
- 
-
 
     // if (this.state.name !== "" && this.state.phone !== "" )
     if (this.props.onContactsVerification )

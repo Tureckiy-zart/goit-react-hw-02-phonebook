@@ -1,6 +1,6 @@
 import React from "react";
+import { BntFormDelete } from "../Buttons/BntFormDelete";
 import { ContactListItem } from "./ContactListItem";
-import { BntFormDelete } from "./BntFormDelete";
 
 
 

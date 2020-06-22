@@ -1,6 +1,4 @@
 import React from "react";
-import { ContactList } from "../Consacts";
-import { BntFormDelete } from "../BntFormDelete";
 
 export const FindedContact = ({
   onfilterClient,
